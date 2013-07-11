@@ -6,6 +6,8 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
 fs.readFile('index.html', function (err, data) {
   if (err) throw err;
+  buf = new Buffer(data);
+  buf.write("some string", 0, "ascii");
   response.send(data);
 });
 });
